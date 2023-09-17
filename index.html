@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #FCB0CB;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #FCB0CB;
+            color: #fff;
+            margin: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        section {
+            text-align: center;
+            padding: 40px;
+        }
+        .music-section {
+            text-align: center;
+            margin: 20px;
+        }
+        .music-button {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            background-image: url('play.png'); /* Replace with your play button image */
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            display: block;
+            margin: 10px auto;
+        }
+        /* Styles for the photo slider */
+        .photo-slider {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .photo-slider-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .photo-slide {
+            flex: 0 0 100%;
+        }
+        .photo-slide img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Buttons to navigate photos */
+        .photo-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .photo-button {
+            background-color: #FCB0CB;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+    </header>
+    <nav>
+        <a href="#music">Music</a>
+        <a href="#photos">My love</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Your introduction and details about yourself go here.</p>
+    </section>
+    <section id="music">
+        <h2>Music</h2>
+        <div class="music-section">
+            <h3>Homebody Remix</h3>
+            <button class="music-button" id="playButton1"></button>
+            <audio id="music1" style="display:none;">
+                <source src="homebodyremix.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="music-section">
+            <h3>YK</h3>
+            <button class="music-button" id="playButton2"></button>
+            <audio id="music2" style="display:none;">
+                <source src="YK.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </section>
+    <section id="photos">
+        <h2>My love</h2>
+        <p>Use the buttons to navigate through photos.</p>
+        <div class="photo-slider">
+            <div class="photo-slider-container">
+                <div class="photo-slide">
+    <img src="img/1.jpeg" alt="Photo 1">
+</div>
+<div class="photo-slide">
+    <img src="img/2.jpeg" alt="Photo 2">
+</div>
+<div class="photo-slide">
+    <img src="img/3.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/4.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/5.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/6.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/7.jpeg" alt="Photo 1">
+</div>
+<div class="photo-slide">
+    <img src="img/8.jpeg" alt="Photo 2">
+</div>
+<div class="photo-slide">
+    <img src="img/9.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/10.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/11.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/12.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/13.jpeg" alt="Photo 1">
+</div>
+<div class="photo-slide">
+    <img src="img/14.jpeg" alt="Photo 2">
+</div>
+<div class="photo-slide">
+    <img src="img/15.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/16.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/17.jpeg" alt="Photo">
+</div>
+<div class="photo-slide">
+    <img src="img/received_1124325255195366.jpeg" alt="Photo">
+</div>
+<!-- Add more images here -->
+
+<
+
+                <!-- Add more images here -->
+            </div>
+            <div class="photo-buttons">
+                <button class="photo-button" onclick="prevPhoto()">Previous</button>
+                <button class="photo-button" onclick="nextPhoto()">Next</button>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>You can provide your contact information or a contact form here.</p>
+    </section>
+
+<script>
+    // JavaScript to navigate photos
+    let currentIndex = 0;
+
+    function showPhoto(index) {
+        const slides = document.querySelectorAll('.photo-slide');
+
+        if (index < 0) {
+            currentIndex = slides.length - 1;
+        } else if (index >= slides.length) {
+            currentIndex = 0;
+        }
+
+        slides.forEach((slide, i) => {
+            if (i === currentIndex) {
+                slide.style.display = 'block';
+            } else {
+                slide.style.display = 'none';
+            }
+        });
+    }
+
+    function prevPhoto() {
+        currentIndex--;
+        showPhoto(currentIndex);
+    }
+
+    function nextPhoto() {
+        currentIndex++;
+        showPhoto(currentIndex);
+    }
+
+    showPhoto(currentIndex);
+</script>
+</body>
+</html>
+
+<script>
+    // JavaScript for the music player (similar for both tracks)
+    const playButton1 = document.getElementById('playButton1');
+    const music1 = document.getElementById('music1');
+
+    playButton1.addEventListener('click', function() {
+        if (music1.paused) {
+            music1.play();
+            playButton1.style.backgroundImage = "url('pause.png')";
+        } else {
+            music1.pause();
+            playButton1.style.backgroundImage = "url('play.png')";
+        }
+    });
+
+    const playButton2 = document.getElementById('playButton2');
+    const music2 = document.getElementById('music2');
+
+    playButton2.addEventListener('click', function() {
+        if (music2.paused) {
+            music2.play();
+            playButton2.style.backgroundImage = "url('pause.png')";
+        } else {
+            music2.pause();
+            playButton2.style.backgroundImage = "url('play.png')";
+        }
+    });
+</script>
+
